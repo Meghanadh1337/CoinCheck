@@ -9,11 +9,11 @@ async function fetchCryptoJob() {
     // Store data in MongoDB
    
     await Cryptocurrency.insertMany([
-      { name: 'Bitcoin', price: bitcoin.usd, marketCap: bitcoin.usd_market_cap, change24h: bitcoin.usd_24h_change },
-      { name: 'Matic', price: matic.usd, marketCap: matic.usd_market_cap, change24h: matic.usd_24h_change },
-      { name: 'Ethereum', price: ethereum.usd, marketCap: ethereum.usd_market_cap, change24h: ethereum.usd_24h_change },
-      { name: 'Litecoin', price: litecoin.usd, marketCap: litecoin.usd_market_cap, change24h: litecoin.usd_24h_change },
-      { name: 'Ripple', price: ripple.usd, marketCap: ripple.usd_market_cap, change24h: ripple.usd_24h_change },
+      { name: 'Bitcoin', price: bitcoin.inr, marketCap: bitcoin.inr_market_cap, change24h: bitcoin.inr_24h_change },
+      { name: 'Matic', price: matic.inr, marketCap: matic.inr_market_cap, change24h: matic.inr_24h_change },
+      { name: 'Ethereum', price: ethereum.inr, marketCap: ethereum.inr_market_cap, change24h: ethereum.inr_24h_change },
+      { name: 'Litecoin', price: litecoin.inr, marketCap: litecoin.inr_market_cap, change24h: litecoin.inr_24h_change },
+      { name: 'Ripple', price: ripple.inr, marketCap: ripple.inr_market_cap, change24h: ripple.inr_24h_change },
     ]);
     
     console.log('Crypto data fetched and stored successfully.');

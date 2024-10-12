@@ -1,34 +1,6 @@
 const axios = require('axios');
 const Crypto = require('../models/cryptocurrency'); // Adjust the path based on your structure
 
-// Function to fetch and store cryptocurrency data
-const fetchCryptoData = async () => {
-    try {
-        const coins = ['bitcoin', 'matic-network', 'ethereum'];
-        const promises = coins.map(coin =>
-            axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=${coin}&vs_currencies=usd&include_market_cap=true&include_24hr_change=true`)
-        );
-
-        const results = await Promise.all(promises);
-
-        for (let i = 0; i < coins.length; i++) {
-            const coinData = results[i].data[coins[i]];
-            const crypto = new Crypto({
-                name: coins[i], // Ensure this matches your model's field
-                price: coinData.usd,
-                marketCap: coinData.usd_market_cap,
-                change24h: coinData.usd_24h_change
-            });
-
-            await crypto.save(); // Save to MongoDB
-        }
-
-        console.log('Crypto data fetched and stored successfully.');
-    } catch (error) {
-        console.error('Error fetching crypto data:', error);
-    }
-};
-
 // Existing function to fetch cryptocurrency stats
 const getStats = async (coin) => {
     if (!coin) {
@@ -71,7 +43,6 @@ const getDeviation = async (coin) => {
 
 // Export all the service functions
 module.exports = {
-    fetchCryptoData,
     getStats,
     getDeviation
 };

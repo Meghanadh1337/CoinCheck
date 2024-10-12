@@ -2,7 +2,7 @@
 const express = require('express');
 const connectDB = require('./config/db'); // Import your connectDB function
 const cryptoRoutes = require('./routes/cryptoRoutes'); // Import your routes
-const { fetchCryptoData } = require('./services/cryptoService'); // Import the fetchCryptoData function from the service
+const fetchCryptoJob = require('./jobs/fetchCryptoJob'); // Import the fetchCryptoJob function
 const cors=require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -16,10 +16,10 @@ connectDB();
 app.use('/api', cryptoRoutes); // Prefix all routes with /api
 
 // Fetch data every 2 hours (7200000 milliseconds)
-setInterval(fetchCryptoData, 7200000);
+setInterval(fetchCryptoJob, 7200000);
 
 // Initial fetch
-fetchCryptoData();
+fetchCryptoJob();
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

@@ -3,7 +3,7 @@ const Cryptocurrency = require('../models/cryptocurrency');
 
 async function fetchCryptoJob() {
   try {
-    const response = await axios.get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,matic-network,ethereum,litecoin,ripple&vs_currencies=usd&include_market_cap=true&include_24hr_change=true');
+    const response = await axios.get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,matic-network,ethereum,litecoin,ripple&vs_currencies=inr&include_market_cap=true&include_24hr_change=true');
     const { bitcoin, 'matic-network': matic, ethereum, litecoin, ripple } = response.data;
     console.log('Fetched crypto data:', response.data);
     // Store data in MongoDB

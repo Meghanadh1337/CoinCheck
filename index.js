@@ -3,9 +3,11 @@ const express = require('express');
 const connectDB = require('./config/db'); // Import your connectDB function
 const cryptoRoutes = require('./routes/cryptoRoutes'); // Import your routes
 const { fetchCryptoData } = require('./services/cryptoService'); // Import the fetchCryptoData function from the service
-
+const cors=require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+app.use(cors());
 
 // Connect to MongoDB
 connectDB();
